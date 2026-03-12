@@ -1,0 +1,2 @@
+# walmat-mining
+investmets plartform
