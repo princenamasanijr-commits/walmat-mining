@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Walmart Mining - Login</title>
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Page-specific style -->
+        <style>
+                body {
+                        background: linear-gradient(180deg, #0a0f1f, #121b38);
+                        color: #ffffff;
+                }
+                .header {
+                        background: #0c102b;
+                }
+                .card {
+                        background: #10193f;
+                }
+                .btn-primary {
+                        background: #ffc107;
+                        color: black;
+                }
+                .btn-secondary {
+                        background: #1f2335;
+                        color: #ffc107;
+                }
+        </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+        <div class="logo">Walmart Mining</div>
+        <div>
+                <a href="register.html" class="btn-secondary">Get Started</a>
+        </div>
+</header>
+
+<!-- Login Card -->
+<section class="card" style="max-width:400px; margin:40px auto; padding:30px;">
+        <h2>Welcome Back</h2>
+        <p>Sign in or create a new account to start earning.</p>
+        <form id="login-form">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit" class="btn-primary">Sign In</button>
+        </form>
+        <p style="margin-top:12px; font-size:13px;">
+                Don’t have an account? <a href="register.html" style="color:#ffc107;">Register</a>
+        </p>
+</section>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a class="nav-item" href="dashboard.html">🏠<br>Home</a>
+    <a class="nav-item" href="deposit.html">⬇️<br>Deposit</a>
+    <a class="nav-item" href="withdraw.html">⬆️<br>Withdraw</a>
+    <a class="nav-item" href="team.html">👥<br>Team</a>
+</div>
+
+<!-- JS -->
+<script src="js/app.js"></script>
+</body>
+</html>

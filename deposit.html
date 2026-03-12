@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walmart Mining - Deposit</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+        body {
+                background: linear-gradient(180deg, #0a0f1f, #121b38);
+                color: #ffffff;
+        }
+        .header { background: #0c102b; }
+        .card { background: #10193f; }
+        .btn-primary { background: #ffc107; color: black; }
+        .btn-secondary { background: #1f2335; color: #ffc107; }
+        .copy-btn { background: #ffc107; color: black; padding: 10px; }
+        table { width:100%; border-collapse: collapse; margin-top:20px; }
+        th, td { padding:10px; border-bottom:1px solid #1b2145; font-size:13px; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+        <div class="logo">Walmart Mining</div>
+        <div>
+                <a href="dashboard.html" class="btn-secondary">Back</a>
+        </div>
+</header>
+
+<!-- Deposit Card -->
+<section class="card" style="max-width:600px; margin:40px auto; padding:30px;">
+        <h2>Deposit USDT</h2>
+        <p>Send USDT to our wallet and submit the details below for manual verification.</p>
+        <p style="color:#ffc107; font-size:13px;">⚠️ Only send USDT via TRC-20 (Tron) or BEP-20 (BNB). Sending other assets will result in permanent loss.</p>
+
+        <form id="deposit-form">
+                <label for="network">Select Network</label>
+                <select id="network" name="network" required>
+                        <option value="BEP-20">BEP-20 (BNB)</option>
+                        <option value="TRC-20">TRC-20 (Tron)</option>
+                </select>
+
+                <label>Company Wallet Address</label>
+                <div style="display:flex; gap:10px; margin-bottom:12px;">
+                        <input type="text" id="company-wallet" value="0x493713BF88BF87cB32D145f72143e71dCC648E10" readonly>
+                        <button type="button" class="copy-btn" onclick="copyWallet()">Copy</button>
+                </div>
+
+                <label>Amount Sent (USDT)</label>
+                <input type="number" id="amount" placeholder="$0" required>
+
+                <label>Your Wallet Address</label>
+                <input type="text" id="user-wallet" placeholder="Address you sent FROM" required>
+
+                <label>Transaction ID (TxID)</label>
+                <input type="text" id="txid" placeholder="e.g. 0x..." required>
+
+                <label>Upload Screenshot (Optional)</label>
+                <input type="file" id="screenshot" accept="image/*">
+
+                <button type="submit" class="btn-primary">Submit Deposit Request</button>
+        </form>
+
+        <!-- Recent Deposits -->
+        <h3 style="margin-top:30px;">Recent Deposits</h3>
+        <table>
+                <thead>
+                        <tr>
+                                <th>User</th>
+                                <th>Amount</th>
+                                <th>Network</th>
+                                <th>Status</th>
+                        </tr>
+                </thead>
+                <tbody id="recent-deposits">
+                        <tr><td>JohnDoe</td><td>$50</td><td>BEP-20</td><td>Pending</td></tr>
+                        <tr><td>JaneSmith</td><td>$100</td><td>TRC-20</td><td>Completed</td></tr>
+                </tbody>
+        </table>
+</section>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a class="nav-item" href="dashboard.html">🏠<br>Home</a>
+    <a class="nav-item" href="deposit.html">⬇️<br>Deposit</a>
+    <a class="nav-item" href="withdraw.html">⬆️<br>Withdraw</a>
+    <a class="nav-item" href="team.html">👥<br>Team</a>
+</div>
+
+<!-- JS -->
+<script src="js/app.js"></script>
+<script>
+        // Copy wallet address
+        function copyWallet() {
+                const wallet = document.getElementById("company-wallet").value;
+                navigator.clipboard.writeText(wallet).then(() => {
+                        alert("Wallet address copied!");
+                });
+        }
+
+        // Handle deposit submission
+        document.getElementById("deposit-form").addEventListener("submit", function(e){
+                e.preventDefault();
+                alert("Deposit requested successfully!");
+                // Here you can add Firebase or backend submission
+        });
+
+        // Change wallet address based on network
+        document.getElementById("network").addEventListener("change", function() {
+                const network = this.value;
+                const walletInput = document.getElementById("company-wallet");
+                if(network === "BEP-20") {
+                        walletInput.value = "0x493713BF88BF87cB32D145f72143e71dCC648E10";
+                } else {
+                        walletInput.value = "TDJQ46sEM9htyiDCDopNsr8Cmi3gHEKb6L";
+                }
+        });
+</script>
+
+</body>
+</html>

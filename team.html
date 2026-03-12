@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walmart Mining - Team</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* -------------------- Team Page Additional Styles -------------------- */
+
+/* Stats Cards */
+.stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+}
+
+.stat-card {
+        background: #10163a;
+        padding: 18px;
+        border-radius: 12px;
+        text-align: center;
+}
+
+.stat-title { font-size: 13px; color: #aab2c5; margin-bottom: 6px; }
+.stat-value { font-size: 22px; color: #ffc107; font-weight: bold; }
+
+/* Referral Box */
+.referral-box { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.referral-link {
+        background: #0b0f22;
+        padding: 12px;
+        border-radius: 8px;
+        flex: 1;
+        word-break: break-all;
+}
+.copy-btn {
+        background: #ffc107; color: black;
+        padding: 10px 12px;
+        border: none; cursor: pointer;
+}
+
+/* Notifications Box */
+.notification-box { background: #0b0f22; padding: 12px; border-radius: 8px; max-height: 150px; overflow-y: auto; margin-bottom: 20px; }
+.notification { border-bottom: 1px solid #1b2145; padding: 8px 0; font-size: 13px; }
+.notification-unread { font-weight: bold; color: #ffc107; }
+
+/* AI Chat Floating Widget */
+#ai-chat-widget {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        font-family: Arial, sans-serif;
+}
+#chat-toggle {
+        background: #ffc107;
+        color: black;
+        padding: 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        text-align: center;
+        font-size: 20px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+#chat-box {
+        display: none;
+        width: 300px;
+        max-height: 400px;
+        background: #10193f;
+        color: white;
+        border-radius: 12px;
+        flex-direction: column;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        overflow: hidden;
+}
+#chat-messages {
+        padding: 10px;
+        overflow-y: auto;
+        height: 220px;
+}
+.message { margin-bottom: 8px; padding: 6px 10px; border-radius: 8px; }
+.message.user { background: #1f2335; align-self: flex-end; color: white; }
+.message.ai { background: #ffc107; color: black; align-self: flex-start; }
+#chat-input-container { display: flex; border-top: 1px solid #1b2145; }
+#chat-input { flex: 1; padding: 10px; border: none; outline: none; background: #0b0f22; color: white; }
+#chat-send { background: #ffc107; color: black; border: none; padding: 10px 12px; cursor: pointer; }
+
+/* Suggested Questions Buttons */
+.suggested-questions { display: flex; flex-direction: column; gap: 8px; padding: 8px; }
+.suggest-btn {
+        background: #1f2335;
+        color: #ffc107;
+        border: none;
+        padding: 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 13px;
+}
+.suggest-btn:hover { opacity: 0.9; }
+
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <div class="logo">Walmart Mining</div>
+</div>
+
+<div class="container" style="padding:20px;">
+
+<h2>Referral Program</h2>
+<p>Share your referral link and earn commissions automatically!</p>
+
+<div class="referral-box">
+    <input type="text" class="referral-link" value="https://walmartmining.com/ref=username" readonly>
+    <button class="copy-btn" onclick="copyReferral()">Copy</button>
+</div>
+
+<h2>Referral Levels & Commissions</h2>
+<div class="stats-grid">
+    <div class="stat-card"><div class="stat-title">Level 1</div><div class="stat-value">5%</div></div>
+    <div class="stat-card"><div class="stat-title">Level 2</div><div class="stat-value">3%</div></div>
+    <div class="stat-card"><div class="stat-title">Level 3</div><div class="stat-value">1%</div></div>
+</div>
+
+<h2>Team Stats</h2>
+<div class="stats-grid">
+    <div class="stat-card"><div class="stat-title">Total Team Members</div><div class="stat-value">12</div></div>
+    <div class="stat-card"><div class="stat-title">Total Team Deposits</div><div class="stat-value">$2,340</div></div>
+    <div class="stat-card"><div class="stat-title">Total Team Withdrawals</div><div class="stat-value">$1,125</div></div>
+</div>
+
+<h2>Notifications</h2>
+<div class="notification-box">
+    <div class="notification notification-unread">Admin: Welcome to your team dashboard!</div>
+    <div class="notification">Admin: New VIP plan available.</div>
+</div>
+
+<h2>Customer Support</h2>
+<p>Email: <a href="mailto:customersupportwalmart@gmail.com">customersupportwalmart@gmail.com</a></p>
+
+</div>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a class="nav-item" href="dashboard.html">🏠<br>Home</a>
+    <a class="nav-item" href="deposit.html">⬇️<br>Deposit</a>
+    <a class="nav-item" href="withdraw.html">⬆️<br>Withdraw</a>
+    <a class="nav-item" href="team.html">👥<br>Team</a>
+</div>
+
+<!-- Floating AI Chat Widget -->
+<div id="ai-chat-widget">
+    <div id="chat-toggle">💬</div>
+    <div id="chat-box">
+        <div id="chat-messages"></div>
+        <div class="suggested-questions">
+            <button class="suggest-btn" data-msg="deposit">Deposit Issues</button>
+            <button class="suggest-btn" data-msg="withdraw">Withdrawal Issues</button>
+            <button class="suggest-btn" data-msg="referral">Referral Questions</button>
+            <button class="suggest-btn" data-msg="support">Contact Support</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Copy referral link
+function copyReferral() {
+    const input = document.querySelector('.referral-link');
+    input.select();
+    input.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    alert('Referral link copied!');
+}
+
+// Toggle chat visibility
+const chatToggle = document.getElementById('chat-toggle');
+const chatBox = document.getElementById('chat-box');
+chatToggle.addEventListener('click', () => {
+    chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+});
+
+// Suggested question buttons
+const suggestButtons = document.querySelectorAll('.suggest-btn');
+const chatMessages = document.getElementById('chat-messages');
+
+suggestButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const msg = btn.dataset.msg;
+        showMessage('user', btn.textContent);
+
+        setTimeout(() => {
+            let response = "";
+            if(msg==="deposit") response = "For deposits, send USDT to the company wallet and submit the form.";
+            else if(msg==="withdraw") response = "Withdrawals are processed manually via BEP-20 network.";
+            else if(msg==="referral") response = "Referral commissions are auto-calculated for Levels 1 (5%), 2 (3%), 3 (1%).";
+            else if(msg==="support") response = "You can contact us at customersupportwalmart@gmail.com for further assistance.";
+            showMessage('ai', response);
+        }, 600);
+    });
+});
+
+function showMessage(type, text) {
+    const div = document.createElement('div');
+    div.classList.add('message', type);
+    div.textContent = text;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+</script>
+
+</body>
+</html>

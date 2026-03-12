@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walmart Mining - Withdraw</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+        body {
+                background: linear-gradient(180deg, #0a0f1f, #121b38);
+                color: #ffffff;
+        }
+        .header { background: #0c102b; }
+        .card { background: #10193f; margin-bottom:20px; padding:20px; border-radius:12px; }
+        .btn-primary { background:#ffc107; color:black; padding:10px 15px; border-radius:8px; font-weight:bold; }
+        .btn-primary:hover { opacity:0.9; }
+        .btn-secondary { background:#1f2335; color:#ffc107; padding:8px 12px; border-radius:8px; font-weight:bold; }
+        table { width:100%; border-collapse: collapse; margin-top:20px; }
+        th, td { padding:10px; border-bottom:1px solid #1b2145; font-size:13px; }
+        .max-btn { background:#ffc107; color:black; padding:6px 10px; border-radius:6px; cursor:pointer; font-size:12px; margin-left:5px; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+        <div class="logo">Walmart Mining</div>
+        <div>
+                <a href="dashboard.html" class="btn-secondary">Back</a>
+        </div>
+</header>
+
+<!-- Withdraw Card -->
+<section class="card" style="max-width:600px; margin:40px auto; padding:30px;">
+        <h2>Withdraw Funds</h2>
+        <p>Withdrawals are processed manually to BEP-20 addresses only.</p>
+
+        <div style="margin-bottom:12px;">
+                <strong>Available Balance:</strong> $0.00
+                <button class="max-btn" onclick="setMax()">MAX</button>
+        </div>
+
+        <form id="withdraw-form">
+                <label>Withdrawal Amount (USDT)</label>
+                <input type="number" id="amount" placeholder="$0" required>
+
+                <label>Network</label>
+                <input type="text" value="BEP-20 (Binance Smart Chain)" readonly>
+
+                <label>Your Receiving Address (BEP-20)</label>
+                <input type="text" id="user-wallet" placeholder="0x..." required>
+
+                <div style="margin-bottom:12px;">
+                        <strong>Withdrawal Fee:</strong> $0.00
+                </div>
+                <div style="margin-bottom:12px;">
+                        <strong>You Receive:</strong> $0.00 USDT
+                </div>
+
+                <button type="submit" class="btn-primary">Submit Request</button>
+        </form>
+
+        <!-- Recent Withdrawals -->
+        <h3 style="margin-top:30px;">Recent Withdrawals</h3>
+        <table>
+                <thead>
+                        <tr>
+                                <th>User</th>
+                                <th>Amount</th>
+                                <th>Address</th>
+                                <th>Status</th>
+                        </tr>
+                </thead>
+                <tbody id="recent-withdrawals">
+                        <tr><td>JohnDoe</td><td>$50</td><td>0x123abc...</td><td>Pending</td></tr>
+                        <tr><td>JaneSmith</td><td>$100</td><td>0x456def...</td><td>Completed</td></tr>
+                </tbody>
+        </table>
+</section>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a class="nav-item" href="dashboard.html">🏠<br>Home</a>
+    <a class="nav-item" href="deposit.html">⬇️<br>Deposit</a>
+    <a class="nav-item" href="withdraw.html">⬆️<br>Withdraw</a>
+    <a class="nav-item" href="team.html">👥<br>Team</a>
+</div>
+
+<!-- JS -->
+<script src="js/app.js"></script>
+<script>
+        // MAX button sets withdrawal amount to available balance
+        function setMax() {
+                document.getElementById("amount").value = 0; // Replace 0 with dynamic balance if connected to backend
+        }
+
+        // Handle withdrawal submission
+        document.getElementById("withdraw-form").addEventListener("submit", function(e){
+                e.preventDefault();
+                alert("Withdrawal requested successfully!");
+                // Future: connect with Firebase / backend to submit withdrawal request
+        });
+</script>
+
+</body>
+</html>

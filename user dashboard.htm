@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Walmart Mining - Dashboard</title>
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Page-specific style -->
+        <style>
+                body {
+                        background: linear-gradient(180deg, #0a0f1f, #121b38);
+                        color: #ffffff;
+                }
+                .header {
+                        background: #0c102b;
+                }
+                .card {
+                        background: #10193f;
+                }
+                .btn-primary {
+                        background: #ffc107;
+                        color: black;
+                }
+                .btn-secondary {
+                        background: #1f2335;
+                        color: #ffc107;
+                }
+                .stat-card {
+                        background: #131c42;
+                }
+        </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+        <div class="logo">Walmart Mining</div>
+        <div>
+                <a href="index.html" class="btn-secondary">Logout</a>
+        </div>
+</header>
+
+<!-- Welcome & Stats -->
+<section class="card">
+        <h2>Welcome Back, <span id="user-name">User</span>!</h2>
+        <p>Here’s a quick overview of your account:</p>
+
+        <div class="stats-grid">
+                <div class="stat-card">
+                        <div class="stat-title">Your Balance</div>
+                        <div class="stat-value" id="balance">$0.00</div>
+                </div>
+                <div class="stat-card">
+                        <div class="stat-title">Active Investments</div>
+                        <div class="stat-value" id="active-investments">0</div>
+                </div>
+                <div class="stat-card">
+                        <div class="stat-title">Pending Withdrawals</div>
+                        <div class="stat-value" id="pending-withdrawals">0</div>
+                </div>
+        </div>
+</section>
+
+<!-- Quick Action Buttons -->
+<section class="card">
+        <h2>Quick Actions</h2>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <a href="deposit.html" class="btn-primary" style="flex:1;">Deposit Funds ⬇️</a>
+                <a href="withdraw.html" class="btn-primary" style="flex:1;">Withdraw Funds ⬆️</a>
+                <a href="vip.html" class="btn-primary" style="flex:1;">VIP Plans 💎</a>
+                <a href="team.html" class="btn-primary" style="flex:1;">Team & Referrals 👥</a>
+        </div>
+</section>
+
+<!-- Referral Box -->
+<section class="card">
+        <h2>Your Referral Link</h2>
+        <div class="referral-box">
+                <div class="referral-link" id="referral-link">https://walmartmining.com/ref=USERNAME</div>
+                <button class="copy-btn" onclick="copyReferral()">Copy</button>
+        </div>
+</section>
+
+<!-- Notifications -->
+<section class="card">
+        <h2>Notifications</h2>
+        <div class="notification-box" id="notifications">
+                <div class="notification notification-unread">Welcome to Walmart Mining! Your account is active.</div>
+        </div>
+</section>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a class="nav-item" href="dashboard.html">🏠<br>Home</a>
+    <a class="nav-item" href="deposit.html">⬇️<br>Deposit</a>
+    <a class="nav-item" href="withdraw.html">⬆️<br>Withdraw</a>
+    <a class="nav-item" href="team.html">👥<br>Team</a>
+</div>
+
+<!-- JS -->
+<script src="js/app.js"></script>
+<script>
+        // Copy referral function
+        function copyReferral() {
+                const referral = document.getElementById("referral-link").textContent;
+                navigator.clipboard.writeText(referral).then(() => {
+                        alert("Referral link copied!");
+                });
+        }
+</script>
+</body>
+</html>

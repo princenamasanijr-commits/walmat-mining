@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Walmart Mining - VIP Plans</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+        body {
+                background: linear-gradient(180deg, #0a0f1f, #121b38);
+                color: #ffffff;
+        }
+        .header { background: #0c102b; }
+        .card { background: #10193f; margin-bottom:20px; padding:20px; border-radius:12px; }
+        .vip-title { font-size:18px; font-weight:bold; margin-bottom:12px; }
+        .vip-info { font-size:13px; margin-bottom:6px; }
+        .btn-primary { background:#ffc107; color:black; padding:10px 15px; border-radius:8px; font-weight:bold; }
+        .btn-primary:hover { opacity:0.9; }
+        .vip-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:15px; margin-top:20px; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+        <div class="logo">Walmart Mining</div>
+        <div>
+                <a href="dashboard.html" class="btn-secondary">Back</a>
+        </div>
+</header>
+
+<!-- VIP Plans -->
+<section style="max-width:1000px; margin:40px auto;">
+        <h2>Investment VIP Plans</h2>
+        <p>Choose a plan that suits your goals. All plans run for 30 days and return your initial capital at the end of the term.</p>
+
+        <div class="vip-grid">
+                <!-- VIP 1 -->
+                <div class="card">
+                        <div class="vip-title">VIP 1</div>
+                        <div class="vip-info">Required Investment: $6.00</div>
+                        <div class="vip-info">Daily Profit: +$1.00</div>
+                        <div class="vip-info">Duration: 30 Days</div>
+                        <div class="vip-info">Total Pure Profit: $30.00</div>
+                        <div class="vip-info">Daily withdrawals • Capital returned • 24/7 support</div>
+                        <button class="btn-primary" onclick="selectPlan('VIP 1')">Select Plan</button>
+                </div>
+
+                <!-- VIP 2 -->
+                <div class="card">
+                        <div class="vip-title">VIP 2</div>
+                        <div class="vip-info">Required Investment: $12.00</div>
+                        <div class="vip-info">Daily Profit: +$1.50</div>
+                        <div class="vip-info">Duration: 30 Days</div>
+                        <div class="vip-info">Total Pure Profit: $45.00</div>
+                        <div class="vip-info">Daily withdrawals • Capital returned • 24/7 support</div>
+                        <button class="btn-primary" onclick="selectPlan('VIP 2')">Select Plan</button>
+                </div>
+
+                <!-- VIP 3 -->
+                <div class="card">
+                        <div class="vip-title">VIP 3</div>
+                        <div class="vip-info">Required Investment: $15.00</div>
+                        <div class="vip-info">Daily Profit: +$2.00</div>
+                        <div class="vip-info">Duration: 30 Days</div>
+                        <div class="vip-info">Total Pure Profit: $60.00</div>
+                        <div class="vip-info">Daily withdrawals • Capital returned • 24/7 support</div>
+                        <button class="btn-primary" onclick="selectPlan('VIP 3')">Select Plan</button>
+                </div>
+
+                <!-- VIP 4 -->
+                <div class="card">
+                        <div class="vip-title">VIP 4</div>
+                        <div class="vip-info">Required Investment: $19.00</div>
+                        <div class="vip-info">Daily Profit: +$2.50</div>
+                        <div class="vip-info">Duration: 30 Days</div>
+                        <div class="vip-info">Total Pure Profit: $75.00</div>
+                        <div class="vip-info">Daily withdrawals • Capital returned • 24/7 support</div>
+                        <button class="btn-primary" onclick="selectPlan('VIP 4')">Select Plan</button>
+                </div>
+
+                <!-- VIP 5 -->
+                <div class="card">
+                        <div class="vip-title">VIP 5</div>
+                        <div class="vip-info">Required Investment: $23.00</div>
+                        <div class="vip-info">Daily Profit: +$3.00</div>
+                        <div class="vip-info">Duration: 30 Days</div>
+                        <div class="vip-info">Total Pure Profit: $90.00</div>
+                        <div class="vip-info">Daily withdrawals • Capital returned • 24/7 support</div>
+                        <button class="btn-primary" onclick="selectPlan('VIP 5')">Select Plan</button>
+                </div>
+
+                <!-- VIP 6 -->
+                <div class="card">
+                        <div class="vip-title">VIP 6</div>
+                        <div class="vip-info">Required Investment: $26.00</div>
+                        <div class="vip-info">Daily Profit: +$3.50</div>
+                        <div class="vip-info">Duration: 30 Days</div>
+                        <div class="vip-info">Total Pure Profit: $105.00</div>
+                        <div class="vip-info">Daily withdrawals • Capital returned • 24/7 support</div>
+                        <button class="btn-primary" onclick="selectPlan('VIP 6')">Select Plan</button>
+                </div>
+        </div>
+</section>
+
+<!-- Bottom Navigation -->
+<div class="bottom-nav">
+    <a class="nav-item" href="dashboard.html">🏠<br>Home</a>
+    <a class="nav-item" href="deposit.html">⬇️<br>Deposit</a>
+    <a class="nav-item" href="withdraw.html">⬆️<br>Withdraw</a>
+    <a class="nav-item" href="team.html">👥<br>Team</a>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+        // Redirect to deposit page with selected plan
+        function selectPlan(plan) {
+                alert(plan + " selected! You will be redirected to Deposit page.");
+                // Store selected plan in localStorage for use in deposit page
+                localStorage.setItem("selectedPlan", plan);
+                window.location.href = "deposit.html";
+        }
+</script>
+</body>
+</html>
